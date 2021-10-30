@@ -11,13 +11,13 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16.x
-      - name: Install extend-luogu-git-commit-msg-std
+      - name: Install exlg-commit-std
         run: |
           npm config set registry http://registry.npmjs.org/
           yarn config set registry https://registry.yarnpkg.com
-          yarn add extend-luogu-git-commit-msg-std
-      - name: Run extend-luogu-git-commit-msg-std
+          yarn add exlg-commit-std
+      - name: Run exlg-commit-std
         env:
           COMMIT_MSG: ${{ toJson(github.event.commits.*.message) }}
         run: |
-          node ./node_modules/extend-luogu-git-commit-msg-std/check.js -c "$PWD/.gitmsgrc.js" -e COMMIT_MSG
+          node ./node_modules/exlg-commit-std/check.js -c "$PWD/.gitmsgrc.js" -e COMMIT_MSG
